@@ -27,6 +27,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.set('view engine', 'ejs')
 
+app.get('/', (req, res) => {
+  res.render('index')
+})
+
+app.post('/', (req, res) => {
+  console.log('TCL: post')
+  res.redirect(302, '/')
+})
 
 app.listen(portNumber, () => {
   console.log(`Express web server started: ${portNumber}`)
