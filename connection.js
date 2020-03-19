@@ -1,7 +1,7 @@
 // const mongoose = require('mongoose')
 require('dotenv').config()
 const MoviesSchema = require('./db-sch')
-const { Schema, model, connect } = require('mongoose')
+const { model, connect, connection } = require('mongoose')
 
 connect(process.env.URI, {
   useCreateIndex: true,
@@ -17,4 +17,6 @@ connection.on('open', (_) => {
 
 const Movies = model('MoviesCollection', MoviesSchema)
 
-module.exports = Movies
+module.exports = {
+  Movies, //<=> Movies: Movies,
+}

@@ -1,12 +1,13 @@
 /**
  * Con base al JSON
- * https://raw.githubusercontent.com/hjorturlarsen/IMDB-top-100/master/data/movies.json
+ https://raw.githubusercontent.com/hjorturlarsen/IMDB-top-100/master/data/movies.json
  *
- * Insertar de forma multiple las peliculas que aparecen aquí.
- * Y verifivar si se guardaron de forma correcta.
- *
- * Hint:// Usar Axios para hacer el llamado http y crear una ruta en Express POST
- * que se consulte  y haga el guarddo en la base de Datos
+   *   Insertar de forma multiple las peliculas que aparecen aquí.
+     * Y     verifivar si se guardaron de forma correcta.
+   * 
+ 
+
+ * Hint * que se consulte  y haga el guarddo en la base de Datos
  */
 
 /**
@@ -19,16 +20,26 @@
 require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
+
+const { Movies } = require('./connection')
 const portNumber = process.env.PORT || 3000
 
+const mongoErr = (err) => {}
 const app = express()
-
+app.use(mongoErr)
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use('/public', express.static('public'))
 
 app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => {
-  res.render('index')
+app.get('/', async (req, res, next) => {
+  try {
+    const result = await Movies.find({})
+    res.render('index')
+  } catch (err) {
+    res.status(500)
+    res.render('error')
+  }
 })
 
 app.post('/', (req, res) => {
