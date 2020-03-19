@@ -1,0 +1,20 @@
+// const mongoose = require('mongoose')
+require('dotenv').config()
+const MoviesSchema = require('./db-sch')
+const { Schema, model, connect } = require('mongoose')
+
+connect(process.env.URI, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useFindAndModify: false,
+})
+  .then((db) => console.log('DB is connected'))
+  .catch((err) => console.error('Error'))
+
+connection.on('open', (_) => {
+  console.log('Database is connected to', process.env.URI)
+})
+
+const Movies = model('MoviesCollection', MoviesSchema)
+
+module.exports = Movies
