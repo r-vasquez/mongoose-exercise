@@ -1,35 +1,38 @@
 {
-  "name": "mongooseexercise",
-  "version": "1.0.0",
-  "description": "Mongoose-integration express-routes express ",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jasmo2/mongoose-exercise.git"
-  },
-  "keywords": [
-    "mongoose",
-    "mongodb",
-    "express",
-    "nodejs",
-    "express-routes",
-    "templates",
-    "ejs"
-  ],
-  "author": "fullstackJS2020",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jasmo2/mongoose-exercise/issues"
-  },
-  "homepage": "https://github.com/jasmo2/mongoose-exercise#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "ejs": "^3.0.1",
-    "express": "^4.17.1",
-    "mongoose": "^5.9.5",
-    "nodemon": "^2.0.2"
-  }
+    "name": "mongooseexercise",
+    "version": "1.0.0",
+    "description": "Mongoose-integration express-routes express ",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon ./index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jasmo2/mongoose-exercise.git"
+    },
+    "keywords": [
+        "mongoose",
+        "mongodb",
+        "express",
+        "nodejs",
+        "express-routes",
+        "templates",
+        "ejs"
+    ],
+    "author": "fullstackJS2020",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jasmo2/mongoose-exercise/issues"
+    },
+    "homepage": "https://github.com/jasmo2/mongoose-exercise#readme",
+    "dependencies": {
+        "axios": "^0.19.2",
+        "body-parser": "^1.19.0",
+        "dotenv": "^8.2.0",
+        "ejs": "^3.0.1",
+        "express": "^4.17.1",
+        "mongoose": "^5.9.5",
+        "nodemon": "^2.0.2"
+    }
 }
