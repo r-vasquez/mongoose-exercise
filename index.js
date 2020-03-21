@@ -66,8 +66,22 @@ app.delete('/', async (req, res) => {
   res.redirect(302, '/')
 })
 
+app.put('/', async (req, res) => {
+  const {
+    body: { id, rank, title },
+  } = req
+  try {
+    const updateRes = await Movies.findByIdAndUpdate(id, {
+      rank,
+      title,
+    })
+  } catch (error) {
+    console.error(err)
+  }
+  res.redirect(302, '/')
+})
+
 app.post('/', async (req, res) => {
-  console.log('TCL: post')
   try {
     const { data: movies } = await axios.get(
       'https://raw.githubusercontent.com/hjorturlarsen/IMDB-top-100/master/data/movies.json'
