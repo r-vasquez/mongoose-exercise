@@ -4,6 +4,7 @@ const MoviesSchema = require('./db-sch')
 const { model, connect, connection } = require('mongoose')
 
 connect(process.env.URI, {
+  useUnifiedTopology: true,
   useCreateIndex: true,
   useNewUrlParser: true,
   useFindAndModify: false,
