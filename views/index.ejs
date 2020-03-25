@@ -2,60 +2,62 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('partials/head'); -%>
+<%- include('partials/head'); -%>
 
-  <body>
-    <form action="/" method="POST">
-      <div class="input-field col s6">
-        <button class="waves-effect waves-light btn" type="submit">Send</button>
-      </div>
-    </form>
+<body>
+  <h1>Top 100 Peliculas - IMDB</h1>
+  <form action="/" method="POST">
+    <div class="input-field col s6">
+      <button class="waves-effect waves-light btn" type="submit">Send</button>
+    </div>
+  </form>
 
-    <% if(queryResult.length === 0){ %>
-    <section style="align-items: center;display: flex;flex-direction: column;">
-      <h3 style="text-align:center;">Database is empty</h3>
-    </section>
-    <% } else { %>
-    <h5>Found movies: <%- queryResult.length %></h5>
-    <table style="width:100%">
-      <tr>
-        <th>rank</th>
-        <th colspan="2">title</th>
-        <th>Delete</th>
-      </tr>
-      <% console.log("queryResult length: ", queryResult.length ) %> <% for
+  <% if(queryResult.length === 0){ %>
+  <section style="align-items: center;display: flex;flex-direction: column;">
+    <h3 style="text-align:center;">Database is empty</h3>
+  </section>
+  <% } else { %>
+  <h5>Found movies: <%- queryResult.length %></h5>
+  <table style="width:100%">
+    <tr>
+      <th>rank</th>
+      <th colspan="2">title</th>
+      <th>Delete</th>
+    </tr>
+    <% console.log("queryResult length: ", queryResult.length ) %> <% for
       (const movie of queryResult) { %>
-      <tr>
-        <form action="/" method="POST">
-          <input type="hidden" name="_method" value="PUT" />
-          <input type="hidden" name="id" value="<%- movie._id %>" />
-          <td>
-            <input type="text" name="rank" value="<%- movie.rank %>" />
-          </td>
-          <td>
-            <input type="text" name="title" value="<%- movie.title %>" />
-          </td>
-          <td>
-            <button class="waves-effzect waves-light btn" type="submit">
-              Actualizar
-            </button>
-          </td>
-        </form>
+    <tr>
+      <form action="/" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+        <input type="hidden" name="id" value="<%- movie._id %>" />
         <td>
-          <form action="/" method="POST">
-            <div class="input-field col s6">
-              <input type="hidden" name="_method" value="DELETE" />
-              <input type="hidden" name="id" value="<%- movie._id %>" />
-              <button class="waves-effect waves-light btn" type="submit">
-                BORRAR
-              </button>
-            </div>
-          </form>
+          <input type="text" name="rank" value="<%- movie.rank %>" />
         </td>
-      </tr>
-      <% } %>
-    </table>
-
+        <td>
+          <input type="text" name="title" value="<%- movie.title %>" />
+        </td>
+        <td>
+          <button class="waves-effzect waves-light btn" type="submit">
+            Actualizar
+          </button>
+        </td>
+      </form>
+      <td>
+        <form action="/" method="POST">
+          <div class="input-field col s6">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="hidden" name="id" value="<%- movie._id %>" />
+            <button class="waves-effect waves-light btn" type="submit">
+              BORRAR
+            </button>
+          </div>
+        </form>
+      </td>
+    </tr>
     <% } %>
-  </body>
+  </table>
+
+  <% } %>
+</body>
+
 </html>
